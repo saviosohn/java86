@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="java86.Dao">
+
+<!-- ============================== -->
+<!-- ==========Member Dao========== -->
+<!-- ============================== -->
+<insert id="insertMember" parameterType="member">
+	insert into java86_member(           
+		    mem_id, mem_password, mem_name, mem_email_id, mem_email_domain, mem_tel, img_real_name 
+		) values (                       
+		    #{mem_id}, #{mem_password}, #{mem_name}, #{mem_email_id}, #{mem_email_domain}, #{mem_tel}, #{img_real_name} 
+		)                               
+</insert>
+	
+<update id="updateMember" parameterType="member">
+	update java86_member 
+	   set mem_password = #{mem_password}, mem_name = #{mem_name}, mem_email_id = #{mem_email_id}, 
+	   	   mem_email_domain = #{mem_email_domain}, mem_tel = #{mem_tel}, img_real_name = #{img_real_name} 
+	 where mem_id = #{mem_id}    	    
+</update>
+
+<update id="updateMemberPassword" parameterType="member">
+	update java86_member 
+	   set mem_password = #{mem_password} 
+	 where mem_id = #{mem_id}
+</update>
+
+<update id="updateMemberLevel" parameterType="member">
+	update java86_member 
+	   set mem_level = #{mem_level} 
+	 where mem_id = #{mem_id}	    
+</update>
+
+<delete id="deleteMember" parameterType="string">
+	delete
+	  from java86_member
+	 where mem_id = #{mem_id} 
+</delete>
+	
+<resultMap id="memberMap" type="member">
+	<result column="mem_id" property="memId" />
+	<result column="mem_password" property="memPassword" />
+	<result column="mem_name" property="memName" />
+	<result column="mem_email_id" property="memEmailId" />
+	<result column="mem_email_domain" property="memEmailDomain" />
+	<result column="mem_tel" property="memTel" />
+	<result column="mem_level" property="memLevel" />
+	<result column="img_real_name" property="imgRealName" />
+	<result column="mem_reg_date" property="memRegDate" />
+</resultMap>
+	
+<select id="selectMember" resultMap="memberMap">
+	    select *         
+		  from java86_member  
+		 order by mem_id 
+</select>
+	
+<select id="selectMemberById" parameterType="string" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_id = #{mem_id}
+</select>
+
+<select id="selectMemberByName" parameterType="string" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_name like '%#{mem_name}%'
+</select>
+
+<select id="selectMemberByEmailId" parameterType="string" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_email_id like '%#{mem_email_id}%'
+</select>
+
+<select id="selectMemberByEmailDomain" parameterType="int" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_email_domain = #{mem_email_domain}
+</select>
+
+<select id="selectMemberByLevel" parameterType="int" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_level = #{mem_level}
+</select>
+
+<select id="selectMemberByTel" parameterType="string" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_tel = '%#{mem_tel}%'
+</select>
+
+<select id="loginMember" parameterType="member" resultMap="memberMap">
+	select *
+	  from java86_member  
+	 where mem_id = #{memId} and mem_password = #{memPassword}
+</select>
+
+
+<!-- ============================== -->
+<!-- ========== File Dao ========== -->
+<!-- ============================== -->
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
