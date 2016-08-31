@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+body {background-color: #ffb441; right:0; margin:0; position: relative;}
+#smSide3 {position:fixed; background-color:#000; width:350px; height:100%; top:0; left:-350px;}
+#smSide3 ul {padding:30px 10px 10px 120px;}
+#smSide3 ul li {color:#fff;}
+#smSide3 .smBtn3 {background-color:rgba(0,0,0,1); position:absolute; top:20px; left:360px; margin:0; padding:0; border:none; border-radius:50%;  text-align: center;  } 
+#smSide3 .smBtn3 a {color:#fff; text-decoration:none; display:block; padding:10px; width:50px; height:50px; line-height:55px; }
+#smCont3 {text-align:center; font-size:100px; padding-top:20%; color:#fff;}
+.iconBtn {
+  position: relative;
+  height: 50px;
+  width: 60px;
+  cursor: pointer;
+  display: inline-block;
+}
+.iconBtn .bar {
+  width: 60px;
+  height: 5px;
+  background: #fff;
+  margin: 5px 0;
+  position: absolute;
+}
+.iconBtn .bar.one {
+  top: 0;
+  left: 0;
+}
+.iconBtn .bar.two {
+  top: 10px;
+  left: 0;
+}
+.iconBtn .bar.three {
+  top: 20px;
+  left: 0;
+}
+.iconBtn .bar.one.active {
+  -webkit-animation-name: one;
+          animation-name: one;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.iconBtn .bar.one.deactivate {
+  -webkit-animation-name: one-reverse;
+          animation-name: one-reverse;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.iconBtn .bar.two.active {
+  -webkit-animation-name: two;
+          animation-name: two;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.iconBtn .bar.two.deactivate {
+  -webkit-animation-name: two-reverse;
+          animation-name: two-reverse;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.iconBtn .bar.three.active {
+  -webkit-animation-name: three;
+          animation-name: three;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.iconBtn .bar.three.deactivate {
+  -webkit-animation-name: three-reverse;
+          animation-name: three-reverse;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+
+@-webkit-keyframes one {
+  0% {
+    top: 0;
+  }
+  30% {
+    top: -5px;
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    top: 10px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@keyframes one {
+  0% {
+    top: 0;
+  }
+  30% {
+    top: -5px;
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    top: 10px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+@-webkit-keyframes one-reverse {
+  0% {
+    top: 10px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  30% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    top: -5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes one-reverse {
+  0% {
+    top: 10px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  30% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    top: -5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-webkit-keyframes two {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes two {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes two-reverse {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes two-reverse {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes three {
+  0% {
+    top: 20px;
+  }
+  30% {
+    top: 25px;
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    top: 10px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+@keyframes three {
+  0% {
+    top: 20px;
+  }
+  30% {
+    top: 25px;
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    top: 10px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+@-webkit-keyframes three-reverse {
+  0% {
+    top: 10px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  30% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    top: 25px;
+  }
+  100% {
+    top: 20px;
+  }
+}
+@keyframes three-reverse {
+  0% {
+    top: 10px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  30% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  60% {
+    top: 10px;
+  }
+  80% {
+    top: 25px;
+  }
+  100% {
+    top: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="smSide3">
+    <ul>
+        <li>SUB MENU</li>
+        <li>SUB MENU</li>
+        <li>SUB MENU</li>
+        <li>SUB MENU</li>
+        <li>SUB MENU</li>
+    </ul>
+    <span class="smBtn3">
+    	<div class="iconBtn">
+			<div class="bar one"></div>
+			<div class="bar two"></div>
+			<div class="bar three"></div>
+		</div>
+    </span>
+</div>
+
+<div id="smCont3">contnents</div>
+<script>
+jQuery(document).ready(function(){
+	var smSide2 = $("#smSide2");
+    var smBtn2 = smSide2.find(".smBtn2");
+    var smCont2 = $("#smCont2");
+    var iconBtn = $(".iconBtn");
+      
+	smBtn2.on("click", function(){
+		smSide2.toggleClass("open");
+			if(smSide2.hasClass("open")){
+			smSide2.stop().animate({left:"-70px"},300,"easeOutBack");
+			smCont2.stop().animate({left:"350px"},300,"easeOutBack");
+			smBtn2.find("> a").text("CLOSE");
+		} else {
+			smSide2.stop().animate({left:"-350px"},300,"easeOutBack");
+			smCont2.stop().animate({left:"0px"},300,"easeOutBack");
+			smBtn2.find("> a").text("OPEN");
+		};
+	});
+	
+	iconBtn.on("click", function(){
+		if ($('.iconBtn .bar').hasClass('active')) {
+		   $('.iconBtn .bar').removeClass('active');
+		   $('.iconBtn .bar').addClass('deactivate');
+		}
+		else {
+			$('.iconBtn .bar').removeClass('deactivate');
+			$('.iconBtn .bar').addClass('active');
+		}
+	});
+});
+
+
+</script>
+</body>
+</html>

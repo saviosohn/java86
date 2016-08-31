@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<hr>
+ 	비밀번호<input type="text" id="passcheck" size="30">
+	<button type="button" onclick="delchk()">확인</button>
+	<hr>
+	<script>
+	
+	function delchk() {
+		var passcheck = document.getElementById("passcheck");
+		console.log(pass);
+		if (pass == passcheck.value){
+			opener.goPage();
+			self.close();         
+			
+		} else {
+			alert("비밀번호를 확인해주세요");
+			console.log(pass);
+			passcheck.focus();
+		}
+	
+	}
+	
+	
+	</script>
+</body>
+</html>

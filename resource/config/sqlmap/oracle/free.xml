@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free.FreeDAO">
+	<insert id="insertFree" parameterType="free">
+	    <selectKey keyProperty="freeNo" order="BEFORE" resultType="int">
+	        select java86_free_no.nextval from dual
+	    </selectKey>
+	    insert into java86_free(           
+		    free_no, title, free_id, content, pass, file_No   
+		) values (                       
+		    #{freeNo}, #{title}, #{freeId}, #{content}, #{pass}, #{fileNo}
+		)                               
+	</insert>
+	
+	<update id="updateFree" parameterType="free">
+		update java86_free 
+		   set title = #{title},
+		       content = #{content}		    
+		 where free_no = #{freeNo}    	    
+	</update>
+		
+	<delete id="deleteFree" parameterType="int">
+	    delete
+	      from java86_free
+	     where free_no = #{freeNo} 
+	</delete>
+	
+	<resultMap id="freeMap" type="free">
+	    <result column="free_no" property="freeNo" />
+	    <result column="title" property="title" />
+	    <result column="free_id" property="freeId" />
+	    <result column="clicks" property="clicks" />
+	    <result column="pass" property="pass" />
+	    <result column="content" property="content" />
+	    <result column="reg_date" property="regDate" />
+	    <result column="file_No" property="fileNo" />
+	    
+	</resultMap>
+	
+	<select id="selectFree" resultMap="freeMap">
+	    select *         
+		  from java86_free  
+		 order by free_no desc 
+	</select>
+	
+	<select id="selectFreeByNo" parameterType="int" 
+	                             resultMap="freeMap">
+	    select *         
+		  from java86_free  
+		 where free_no = #{freeNo}
+	</select>
+	
+	<insert id="insertFreeFile" parameterType="freeFile" >
+		 <selectKey keyProperty="fileNo" order="BEFORE" resultType="int">
+	        select free_file_no.nextval from dual
+	    </selectKey>
+		insert into free_file(
+			file_No,  oriname , realname , filepath 
+		) values ( #{fileNo} , #{oriname}, #{realname}, #{filepath}
+		
+		)
+		
+	</insert> 
+	
+	<select id="selectFreeFileByNo" parameterType="int" 
+									resultType="freeFile">
+	select
+			file_No as fileNo,
+		   realpath as realpath,
+		   	oriname as oriname,
+		   	realname as realname,
+		    filepath as filepath,
+		    thumnail as thumnail
+	 from free_file
+    where file_No = #{findNo}  	
+		
+    </select>
+  <update id="updateclicks" parameterType="int">  
+    update java86_free
+       set clicks =  clicks +  1
+    
+     where free_no = #{freeNo}
+	
+	</update>
+	
+	<select id="selectFt" parameterType="string"
+						  resultMap="freeMap">
+		select *
+		  from java86_free
+		 where title like '%'||#{title}||'%'
+	
+	</select>
+	<select id="selectFw" parameterType="string"
+						  resultMap="freeMap">
+		select *
+		  from java86_free
+		 where free_id like '%'||#{freeId}||'%'
+	
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
