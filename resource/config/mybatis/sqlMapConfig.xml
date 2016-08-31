@@ -8,8 +8,13 @@
 	
 	<!-- SQL의 결과를 담을 VO 객체들의 별칭을 설정하여 사용의 편의를 도모  -->
 	<typeAliases>
-		<typeAlias alias="fine" type="java86.VO.FineVO" />
+		<typeAlias alias="fvo" type="java86.VO.FineVO" />
+		<typeAlias alias="msvo" type="java86.VO.MessageVO" />
+		<typeAlias alias="srvo" type="java86.VO.MessageSRVO" />
+		<typeAlias alias="mpvo" type="java86.VO.MessagePageVO" />
 		<typeAlias alias="member" type="java86.VO.MemberVO" />
+		<typeAlias alias="code" type="java86.VO.CodeVO" />
+		<typeAlias alias="file" type="java86.VO.FileVO" />
 	</typeAliases>
 	
 	<environments default="development">
@@ -26,5 +31,6 @@
 
 	<mappers>
 		<mapper resource="config/sqlmap/oracle/java86.xml"/>
+		<mapper resource="config/sqlmap/oracle/member.xml"/>
 	</mappers>
 </configuration>

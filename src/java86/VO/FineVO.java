@@ -9,8 +9,16 @@ public class FineVO {
 	private int fineAmount;
 	private String fineDetail;
 	private Date fineDate;
+	private int sum;
 	
 	
+	
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 	public int getFineNo() {
 		return fineNo;
 	}

@@ -7,11 +7,12 @@ public class MemberVO {
 	String	memPassword;
 	String	memName;
 	String	memEmailId;
-	int		memEmailDomain;
+	int		memEmailDomainIndex;
+	String	memEmailDomain;
 	String	memTel;
 	Date	memRegDate;
 	int		memLevel;
-	String	imgRealName;
+//	String	imgRealName;
 
 	public String getMemId() {
 		return memId;
@@ -37,10 +38,16 @@ public class MemberVO {
 	public void setMemEmailId(String memEmailId) {
 		this.memEmailId = memEmailId;
 	}
-	public int getMemEmailDomain() {
+	public int getMemEmailDomainIndex() {
+		return memEmailDomainIndex;
+	}
+	public void setMemEmailDomainIndex(int memEmailDomainIndex) {
+		this.memEmailDomainIndex = memEmailDomainIndex;
+	}
+	public String getMemEmailDomain() {
 		return memEmailDomain;
 	}
-	public void setMemEmailDomain(int memEmailDomain) {
+	public void setMemEmailDomain(String memEmailDomain) {
 		this.memEmailDomain = memEmailDomain;
 	}
 	public String getMemTel() {
@@ -61,10 +68,10 @@ public class MemberVO {
 	public void setMemLevel(int memLevel) {
 		this.memLevel = memLevel;
 	}
-	public String getImgRealName() {
-		return imgRealName;
-	}
-	public void setImgRealName(String imgRealName) {
-		this.imgRealName = imgRealName;
-	}	
+//	public String getImgRealName() {
+//		return imgRealName;
+//	}
+//	public void setImgRealName(String imgRealName) {
+//		this.imgRealName = imgRealName;
+//	}	
 }
