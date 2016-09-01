@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +16,82 @@
 <!-- ----------------------------------------------------------------------------- -->
 <style>
 /* * { border: 1px solid black;} */
+/* //////////////////////////////////////////////////////// */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	position: absolute;
+	width: 100%
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	padding: 0;
+}
+
+.header {
+	position: relative;
+	height: 257px;
+}
+
+.content {
+	position: relative;
+}
+
+#t1 {
+	position: relative;
+	width: 100%;
+	height: 254px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	box-sizing: border-box
+}
+
+#t2 {
+	width: 100%;
+	height: 223px;
+	position: relative;
+	top: -700px;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+#t3 {
+	width: 43px;
+	height: 43px;
+	position: relative;
+	top: -434px;
+	left: 30px;
+}
+
+#tt1, #tt2, #tt3, #tt4, #tt5, #tt6 {
+	float: left;
+	margin-top: 30px;
+	margin-left: 10px;
+}
+#tt7{float: right; position: relative; top : -220px; left: -30px; z-index: 99;}
+
+#tt1 {
+	margin-left: 140px;
+}
+/* 	#ta1 {clear: both; margin-top: 150px; border: 1px solid red; margin-top: 25px;float: left; } */
+#ta3 {
+	clear: both;
+	
+}
+
+
+
+#ta2, #ta3, #ta4 {
+	float: right;
+	margin-top: 50px;
+}
+#t1img{height: 256px;}
+
 
 .im1{float: left; margin-left: 30px; padding: 0;}
 .im2{clear: both;}
@@ -22,9 +99,9 @@
 </style>
 </head>
 <body>
-<div class= "container-fluid" id="ctn">
+<div class= "container" id="ctn">
 	<div class= "header">
-<%-- 		<%@ %> --%>
+<%@ include file="/include/topMenu.jsp"%>
 	</div>
 	<div class = "content" >
 			<div class="row"  id="ro">
@@ -60,11 +137,71 @@
 	 <c:out value="${regDate }"/><br>
 	 첨부파일 : <a href="${pageContext.request.contextPath}/down?path=${file.filepath}&realName=${file.realname}&oriName=${file.oriname}">${file.oriname}</a> <br>
 	 <hr>
-	 <c:out value="${free.content}"/> <img width="500" src="${pageContext.request.contextPath}/upload/${file.filepath}/${file.realname}" >
-	 <hr>
+	 <c:out value="${free.content}"/> 
 	 <c:if test ="${!empty file}">
-
+<img width="500" src="${pageContext.request.contextPath}/upload/${file.filepath}/${file.realname}" >
 	 </c:if>
+	 <hr>
+	 <div id="comment">
+			<form method="post" action="${pageContext.request.contextPath}/free/commentRegist">
+				<input type="hidden" name="freeNo" value="${free.freeNo}" />	
+				<input type="hidden" name="freeId" value="${user}" />	
+				<table width="70%">
+				<tr>
+					<td><c:out value="${user}" /></td>
+					<td><textarea name="content" rows="2" cols="60"></textarea></td>
+					<td><input type="submit" value="등록" /></td>
+				</tr>	
+				</table>
+			</form>
+		</div>
+		
+		<form action="commentUpdate" method="post">
+			<input type="hidden" name="no" value="${free.freeNo}" />
+			<input type="hidden" name="commentNo" value="${commentNo}" />
+		<div id="commentList">
+			
+		  <table width='80%' border='1'>
+		  <tr>
+			<c:forEach var="comment" items="${commentList}">
+			<c:choose>
+		  		<c:when test="${commentNo eq comment.commentNo}">	
+					<tr>
+					  <td><c:out value="${comment.id}" /></td>
+					  <td>
+					  	<textarea name="content" rows="2" cols="60"><c:out value="${comment.content}" /></textarea>
+					  </td>
+					  <td colspan="2">
+					  	  <input type="submit" value="수정" />	
+					  </td>
+					 </tr>
+			 	</c:when>
+			 	<c:otherwise>
+					<tr>
+					  <td><c:out value="${comment.id}" /></td>
+					  <td>
+					  		<c:out value="${comment.content}" /></td>
+					  <td><fmt:formatDate var="regDate" value="${comment.regDate}" 
+					                      pattern="yyyy-MM-dd HH:mm:ss" />
+					      <c:out value="${regDate}" />
+					  </td>
+					  <td>
+					  	  <a href="${pageContext.request.contextPath}/free/commentDelete?commentNo=${comment.commentNo}&no=${comment.no}">삭제</a>	
+					  		
+					  </td>
+					 </tr>
+			 	</c:otherwise>
+			 </c:choose>	
+			 </c:forEach>
+			 <c:if test="${empty commentList}">
+			 <tr>
+			    <td colspan='4'>댓글이 존재하지 않습니다.</td>
+			 </tr>
+		 	</c:if>
+		 </table>
+		</div>
+		</form>
+	</div>
 	 </div>
 	</div>
 	<div class="footer">
@@ -74,7 +211,95 @@
 </div>
 </div>
 <script>
+// 		function moveT2(){
 
+// 			var t2 = document.querySelector("#t2");
+// 			t2.style.top=-254+"px";
+// 		};
+
+var x = -477;
+var y = -252;
+var i = 1;
+
+function showbSlide() {
+
+	y -= 15;
+
+	var obj = document.querySelector("#t2");
+	obj.style.top = y + "px";
+	if (y > -477) {
+		setTimeout(showbSlide, 40);
+	} else {
+		y = -252;
+		i--;
+	}
+};
+
+function showSlide() {
+	x += 15;
+
+	var obj = document.querySelector("#t2");
+	obj.style.top = x + "px";
+	if (x < -255) {
+		setTimeout(showSlide, 40);
+	}
+
+	else {
+
+		x = -500;
+		i++;
+	}
+};
+
+function imgCh() {
+
+	var image = document.getElementById('t3img1');
+	if (image.src.match("button1")) {
+		showSlide();
+		image.src = "${pageContext.request.contextPath}/images/button2.png";
+		image.setAttribute("onclick", "imgCh()");
+
+	} else if (image.src.match("button2")) {
+		showbSlide();
+		image.src = "${pageContext.request.contextPath}/images/button1.png";
+		image.setAttribute("onclick", "imgCh()");
+	}
+};
+
+function start() {
+	window.open("/java86/login/loginForm", "pop", "width=530, height=500");
+
+};
+
+
+
+
+	function MessageChk(){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/MessageCheck",
+			success : function(result){
+				console.log(result);
+				if(result == "1" ){
+					var pop1 = document.querySelector("#pop1");
+					pop1.style.top="200px";
+					pop1.style.left="30px";
+				}else{
+					var pop1 = document.querySelector("#pop1");
+					pop1.style.top="-255px";
+					pop1.style.left="-255px";
+					
+				}
+			}
+		})
+	
+	};
+	var user = "${user}";
+	if(user!= ""){
+		
+		
+		setInterval(MessageChk, 3000);
+	
+	}
 	
 	function delchkwin() {
 		var win = window.open("delchk.html",'', "width=400, height=400");

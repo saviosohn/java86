@@ -69,7 +69,7 @@ public class FreeWriteController extends HttpServlet {
 		free.setTitle(mRequest.getParameter("title"));
 		free.setFreeId(mRequest.getParameter("freeId"));
 		free.setPass(Integer.parseInt(mRequest.getParameter("pass")));
-		free.setContent(mRequest.getParameter("content"));
+		free.setContent(mRequest.getParameter("fcontent"));
 		free.setFileNo(fno);
 		dao.insertFree(free);
 		response.sendRedirect("list");

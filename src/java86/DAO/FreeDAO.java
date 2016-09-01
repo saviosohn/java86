@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import java86.VO.FreeComment;
 import java86.VO.FreeFile;
 import java86.VO.FreeVO;
 import util.MyAppSqlConfig;
@@ -67,4 +68,19 @@ public class FreeDAO {
 		return session.selectList("free.FreeDAO.selectFw", writer);
 	}
 	
+	public void insertComment(FreeComment comment) {
+		session.insert("free.FreeDAO.insertComment", comment);
+		session.commit();
+	}
+	public List<FreeComment> selectCommentByNo(int findNo) {
+		return session.selectList("free.FreeDAO.selectCommentByNo", findNo);
+	}
+	public void deleteComment(int commentNo) {
+		session.delete("free.FreeDAO.deleteComment", commentNo);
+		session.commit();
+	}
+	public void updateComment(FreeComment comment) {
+		session.update("free.FreeDAO.updateComment", comment);
+		session.commit();
+	}
 }

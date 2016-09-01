@@ -17,6 +17,7 @@
 		<typeAlias alias="file" type="java86.VO.FileVO" />
 		<typeAlias alias="free" type="java86.VO.FreeVO" />
 		<typeAlias alias="freeFile" type="java86.VO.FreeFile" />
+		<typeAlias alias="comment" type="java86.VO.FreeComment" />
 	</typeAliases>
 	
 	<environments default="development">

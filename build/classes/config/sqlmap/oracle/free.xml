@@ -16,6 +16,7 @@
 	<update id="updateFree" parameterType="free">
 		update java86_free 
 		   set title = #{title},
+		   	   free_id = #{freeId},
 		       content = #{content}		    
 		 where free_no = #{freeNo}    	    
 	</update>
@@ -98,6 +99,41 @@
 		 where free_id like '%'||#{freeId}||'%'
 	
 	</select>
+	
+	
+<!-- ################################# -->	
+	<insert id="insertComment" parameterType="comment">
+		insert into free_comment(
+			comment_no, no, id, content
+		) values (
+			free_comment_no.nextVal, #{no}, #{id}, #{content}
+		)
+	</insert>
+	
+	<select id="selectCommentByNo" parameterType="int" 
+	        resultType="comment">
+	    select comment_no as commentNo,
+	           no,
+	           id,
+	           content,
+	           reg_date as regDate
+	      from free_comment
+	     where no = #{no}    
+	     order by comment_no   
+	</select>
+	
+	<delete id="deleteComment" parameterType="int">
+	    delete 
+	      from free_comment
+	     where comment_no = #{commentNo}
+	</delete>
+	
+	<update id="updateComment" parameterType="comment">
+	    update free_comment
+	       set content = #{content}
+	     where comment_no = #{commentNo}
+	</update>
+	<!-- ################################# -->
 </mapper>
 
 

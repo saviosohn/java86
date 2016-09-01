@@ -67,4 +67,26 @@ select       j.free_no,
      select clicks 
        				   from  java86_free
        				  where free_no = 52;
+       				  
+       				  
+       				  
+ 
+
+
+
+
+create table free_comment (
+	comment_no number(6) primary key,
+	no number(6) not null,
+	content varchar2(200) not null,
+	id varchar2(20) not null,
+	reg_date date default sysdate
+);
+	create sequence free_comment_no		   
+		
+
+
+
+      				  
+       				  
 		

@@ -19,6 +19,7 @@ public class FreeListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchType = request.getParameter("searchType");
+		System.out.println(searchType);
 		
 		String searchWord = request.getParameter("searchWord");
 		
