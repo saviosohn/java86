@@ -66,6 +66,7 @@ public class MessageDAO {
 	
 	//각 메뉴바 페이지 콘트롤러 마다  세팅하기 
 	public List<MessageVO> selectCheckYN(String memId){
+		System.out.println(memId);
 		List<MessageVO> msList = sqlMapping.selectList("java86.DAO.selectCheckYN", memId);
 		return msList;
 	}

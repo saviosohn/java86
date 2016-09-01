@@ -11,8 +11,9 @@
 	*{ margin: 0 auto;}
   table,tr,td { padding: 0px; border-collapse:collapse;} 
  
-   #mslcontent{height: 300px;}
+   #mslcontent{height: 300px; text-decoration: none;}
    #table {height:252px; }
+   a{text-decoration: none;}
 </style>
 </head>
 <body>

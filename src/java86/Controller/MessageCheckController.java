@@ -24,11 +24,13 @@ public class MessageCheckController extends HttpServlet {
 		MessageDAO msDao = new MessageDAO();
 		HttpSession session = request.getSession();
 		String memId = (String)session.getAttribute("user");
+		System.out.println("너너너"+memId);
 		List<MessageVO> msList = new ArrayList<>();
 		msList = msDao.selectCheckYN(memId);
+		
 		String html ="";
 		PrintWriter out = response.getWriter();
-//		System.out.println(msList);
+System.out.println(msList.get(0).getmSendName());
 		if(msList.size()==0){
 			html="0";
 			

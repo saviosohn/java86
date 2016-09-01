@@ -10,7 +10,7 @@
 <style type="text/css">
 *{ margin: 0 auto;}
   table,tr,td { padding: 0px; border-collapse:collapse;} 
-table,tr,td {border: 1px solid red;}  
+
 
   
 </style>

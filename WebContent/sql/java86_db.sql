@@ -79,3 +79,9 @@ select * from java86_file;
 
 delete from java86_member where mem_id = 'saviosohn';
 delete from java86_file where relative_key = 'saviosohn';
+
+	select *
+    	from java86_message
+    	where m_recv_id = 'admin' and m_read_yn= 'n';
+    	
+    	select * from java86_message;

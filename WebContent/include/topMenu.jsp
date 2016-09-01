@@ -1,3 +1,6 @@
+	<div id= "pop1">
+	<img id="pop1img" src="${pageContext.request.contextPath}/images/popletter.png">
+	</div>
 <div id="t1" >
 	<img id="t1img"  align="middle" width= "100%"  src="${pageContext.request.contextPath}/images/bg1.png">
 	<div id="tt7">
@@ -38,7 +41,8 @@
 <%-- 		<img  width="354px;" src="${pageContext.request.contextPath}/images/ston.png"> --%>
 <!-- 	</div>	 -->
 	<div id="ta3">
-		<img  width="100px;"  src="${pageContext.request.contextPath}/images/letter.png" onmouseover="this.src='${pageContext.request.contextPath}/images/letterhover.png' "onmouseout="this.src='${pageContext.request.contextPath}/images/letter.png'" border="0"/>
+	
+		<img onclick="start1()" width="100px;"  src="${pageContext.request.contextPath}/images/letter.png" onmouseover="this.src='${pageContext.request.contextPath}/images/letterhover.png' "onmouseout="this.src='${pageContext.request.contextPath}/images/letter.png'" border="0"/>
 		
 	</div>	
 	<div id="ta2">

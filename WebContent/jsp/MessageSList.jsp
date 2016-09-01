@@ -14,6 +14,7 @@
  
  #mslcontent{height: 300px;}
  #table {height:252px; }
+ a{text-decoration: none;}
 </style>
 </head>
 <body>

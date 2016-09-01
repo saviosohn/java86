@@ -26,6 +26,7 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", mvo.getMemId());
 				session.setAttribute("memberVO", mvo);
+				System.out.println("야야야"+ session.getAttribute("user"));
 				msg="s";
 			
 		} else {

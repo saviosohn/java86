@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <title>Insert title here</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -124,6 +125,18 @@ z-index: 1;
   
 
  } 
+ 	#pop1 { position: fixed; top: -255px; left: -255px; width: 84px; height: 84px; 
+		animation-name: pop1;	/* 애니메이션 이름. 필수 항목. 맨 처음 와야 함. */
+		animation-duration: 0.5s;	/* 동작 시간. 필수 항목 */
+		animation-iteration-count: infinite;	/* 동작 횟수 */
+		animation-direction: reverse;	/* 동작 방향 : normal, reverse, alternate */
+		animation-direction: alternate;}
+		
+		@keyframes pop1 {
+		0% { transform: scale(0.7);}
+		100% { transform: scale(0.8);}
+	}
+	#pop1img {width: 50px;}	
 </style>
 </head>
 <body>
@@ -220,6 +233,10 @@ z-index: 1;
 			window.open("/java86/login/loginForm", "pop", "width=530, height=500");
 
 	};
+		function start1() {
+			window.open("/java86/MessageRList", "pop", "width=530, height=500");
+
+	};
 		
 		
 		
@@ -231,8 +248,8 @@ z-index: 1;
 						console.log(result);
 						if(result == "1" ){
 							var pop1 = document.querySelector("#pop1");
-							pop1.style.top="200px";
-							pop1.style.left="30px";
+							pop1.style.top="255px";
+							pop1.style.left="15px";
 						}else{
 							var pop1 = document.querySelector("#pop1");
 							pop1.style.top="-255px";
